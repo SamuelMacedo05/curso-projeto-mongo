@@ -52,5 +52,24 @@ import java.util.stream.Collectors;
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * PROCESSO DE ATUALIZAÇÃO DE USUÁRIO:
+     */
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
+
+        // 2. Converte os dados brutos (DTO) para um objeto do tipo Usuário.
+        User obj = service.fromDTO(objDto);
+
+        // 3. Garante que o objeto tenha o ID correto da URL.
+        obj.setId(id);
+
+        // 4. Envia para o serviço gravar as mudanças no banco de dados.
+        obj = service.update(obj);
+
+        // 5. Retorna o status 204 (No Content) indicando sucesso sem corpo na resposta.
+        return ResponseEntity.noContent().build();
+    }
+
     }
 
