@@ -2,7 +2,7 @@ package com.samuel.workshopmongo.Services;
 
 
 import com.samuel.workshopmongo.Services.exception.ObjectNotFoundException;
-import com.samuel.workshopmongo.UserRepository;
+import com.samuel.workshopmongo.Repository.UserRepository;
 import com.samuel.workshopmongo.domain.User;
 import com.samuel.workshopmongo.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
