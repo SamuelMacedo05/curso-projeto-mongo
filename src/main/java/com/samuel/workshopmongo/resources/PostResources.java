@@ -5,6 +5,7 @@ import com.samuel.workshopmongo.Services.UserServices;
 import com.samuel.workshopmongo.domain.Post;
 import com.samuel.workshopmongo.domain.User;
 import com.samuel.workshopmongo.dto.UserDTO;
+import com.samuel.workshopmongo.resources2.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,5 +30,14 @@ import java.util.stream.Collectors;
             return ResponseEntity.ok().body(obj);
 
     }
+
+    @GetMapping
+    @RequestMapping(value = "/titlesearch")
+    public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
+          text = URL.decodeParam(text);
+          List<Post> list = service.findByTitle(text);
+          return ResponseEntity.ok().body(list);
+    }
+
 
 }
